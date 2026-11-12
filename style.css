@@ -1,0 +1,397 @@
+/* =========================================================
+   PORTFOLIO — Feuille de style
+   Direction : sobre, fond noir grisé uni, police en pixels
+   façon Minecraft, cadres fins à angles droits.
+   Modifiez les variables ci-dessous pour changer les couleurs.
+   ========================================================= */
+
+/* Police "Minecraft" : recréation libre par Idrees Hassan (licence SIL OFL 1.1).
+   Projet de fan, sans aucun fichier du jeu : https://github.com/IdreesInc/Minecraft-Font
+   Le fichier est chargé depuis le CDN jsDelivr, figé sur une version précise. */
+@font-face {
+  font-family: 'Minecraft';
+  src: url('https://cdn.jsdelivr.net/gh/IdreesInc/Minecraft-Font@261ac77fbf28796ca09c22eb83ecdfe386c4b838/Minecraft.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Fond et surfaces : noir grisé, neutre */
+  --bg: #0c0d0f;              /* fond du site */
+  --bg-alt: #101114;          /* barre du bas */
+  --surface: #14151a;         /* cadres, menu */
+  --border: #272930;          /* filets discrets */
+  --border-strong: #41444d;   /* filets marqués */
+
+  /* Textes */
+  --text: #ece8df;
+  --text-muted: #8c8e97;
+
+  /* Accent : orange (survol, page en cours, point du logo) */
+  --accent: #f28a3c;
+  --accent-hover: #ffa860;
+  --accent-soft: rgba(242, 138, 60, 0.10);
+
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.6);
+  --max-width: 1100px;
+
+  /* Polices : pixels pour les titres et libellés, sans-serif pour le texte courant */
+  --font-pixel: 'Minecraft', 'Courier New', monospace;
+  --font: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Tailles de la police en pixels. Un "pixel" de lettre vaut 1/9 de la taille :
+     18px (2 pixels d'écran) et 36px (4 pixels d'écran) donnent un rendu net. */
+  --px-small: 1.125rem;       /* libellés : logo, menu, barre du bas, étiquettes */
+  --px-large: 2.25rem;        /* titres */
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; color-scheme: dark; background: var(--bg); }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+main { flex: 1; }
+
+img { max-width: 100%; display: block; }
+a { color: var(--accent); text-decoration: none; transition: color .2s ease; }
+a:hover { color: var(--accent-hover); }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+/* La police en pixels n'a qu'une graisse : on garde 400 pour éviter un faux gras flou */
+h1, h2, h3 {
+  margin: 0;
+  line-height: 1.1;
+  font-family: var(--font-pixel);
+  font-weight: 400;
+}
+p { margin: 0 0 1rem; }
+
+::selection { background: var(--accent); color: var(--bg); }
+:focus-visible { outline: 1px solid var(--accent); outline-offset: 3px; }
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.muted { color: var(--text-muted); }
+.accent { color: var(--accent); }
+
+/* Libellés en pixels (menu, barre du bas, boutons, étiquettes) */
+.btn,
+.menu-list a,
+.tags li,
+.project-links,
+.site-footer {
+  font-family: var(--font-pixel);
+  font-size: var(--px-small);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* ---------- Boutons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  padding: .6rem 1.25rem;
+  background: transparent;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.btn:hover { background: var(--accent); color: var(--bg); }
+.btn-outline { color: var(--text); border-color: var(--border-strong); }
+.btn-outline:hover { background: var(--accent-soft); color: var(--accent); border-color: var(--accent); }
+.btn-small { padding: .35rem .85rem; }
+
+/* ---------- Barre du haut ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+  max-width: none;            /* la barre va d'un bord à l'autre de l'écran */
+}
+
+.logo {
+  font-family: var(--font-pixel);
+  font-size: var(--px-small);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--text);
+}
+.logo:hover { color: var(--text); }
+.logo span { color: var(--accent); }
+
+/* Bouton du menu */
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px; height: 42px;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: color .2s ease;
+}
+.icon-btn:hover { color: var(--accent); }
+.menu-btn .icon-close { display: none; }
+.menu.open .menu-btn .icon-open { display: none; }
+.menu.open .menu-btn .icon-close { display: block; }
+
+/* Fenêtre du menu : simple panneau accroché sous la ligne de la barre
+   et collé au bord droit de l'écran (il se place par rapport à la barre). */
+.menu-list {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 1px);
+  min-width: 200px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-top: 0;
+  border-right: 0;
+  padding: .35rem 0;
+  opacity: 0;
+  transform: translateY(-4px);
+  pointer-events: none;
+  transition: opacity .18s ease, transform .18s ease;
+  z-index: 101;
+}
+.menu.open .menu-list { opacity: 1; transform: none; pointer-events: auto; }
+.menu-list a {
+  display: block;
+  padding: .6rem 1.1rem;
+  color: var(--text-muted);
+  transition: color .2s ease;
+}
+.menu-list a:hover { color: var(--accent); }
+.menu-list a[aria-current="page"] { color: var(--accent); }
+
+/* ---------- Sections ---------- */
+/* Contenu calé en haut à gauche, aligné sur le logo, sur toute la largeur */
+.section { padding: 2.5rem 24px 4rem; max-width: none; }
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.75rem;
+}
+.section-head h1,
+.section-head h2 {
+  font-size: var(--px-large);
+}
+/* Filet qui prolonge le titre et s'efface */
+.section-head::after {
+  content: '';
+  flex: 1;
+  min-width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border-strong), transparent);
+  margin-left: .6rem;
+}
+
+.section-page { min-height: 50vh; }
+
+/* ---------- Cartes ---------- */
+/* Cadre fin à angles droits */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 1.75rem;
+  transition: border-color .2s ease;
+}
+.card:hover { border-color: var(--border-strong); }
+.card h3 {
+  font-size: var(--px-small);
+  margin-bottom: .6rem;
+}
+
+.tags { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1rem; }
+.tags li {
+  padding: .15rem .55rem;
+  border: 1px solid var(--border-strong);
+  color: var(--text-muted);
+}
+
+/* ---------- À propos ---------- */
+.about-text { font-size: 1.08rem; max-width: 760px; }
+
+/* ---------- Contact ---------- */
+.contact-block { max-width: 760px; }
+.contact-intro { font-size: 1.08rem; }
+/* Tant qu'il est vide, le texte d'introduction ne prend pas de place */
+.contact-intro:empty { display: none; }
+/* Liste des liens : un libellé gris, puis le lien */
+.contact-links {
+  display: grid;
+  gap: .7rem;
+  font-family: var(--font-pixel);
+  font-size: var(--px-small);
+  line-height: 1.3;
+}
+.contact-links li { display: flex; flex-wrap: wrap; align-items: baseline; gap: .2rem 1.25rem; }
+.contact-label { color: var(--text-muted); min-width: 5rem; }
+.contact-links a { overflow-wrap: anywhere; }
+
+/* ---------- Compétences ---------- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.75rem;
+}
+.skills-grid .muted { font-size: .92rem; margin: 0; }
+
+/* ---------- Projets ---------- */
+/* Sous-catégories : image + nom, soulignés d'un filet.
+   Le titre est un lien vers la page détaillée du projet. */
+.subcat { margin-bottom: 3rem; }
+.subcat-title {
+  font-size: var(--px-small);
+  line-height: 1.3;
+  margin-bottom: 1.25rem;
+  padding-bottom: .9rem;
+  border-bottom: 1px solid var(--border);
+}
+.subcat-title a {
+  display: inline-flex;
+  align-items: center;
+  gap: .9rem;
+  color: var(--text);
+}
+.subcat-title a:hover { color: var(--accent); }
+.subcat-logo { height: 32px; width: auto; flex: none; }
+/* Icône en pixels : agrandie sans flou */
+.subcat-logo-pixel,
+.title-logo-pixel { image-rendering: pixelated; }
+.subcat-desc { color: var(--text-muted); }
+/* Petit paragraphe de description sous le titre */
+.subcat-text { max-width: 760px; }
+
+/* Page détaillée d'un projet */
+.title-logo { height: 40px; width: auto; flex: none; }
+.title-logo-pixel { height: 32px; }
+.title-sub { font-size: var(--px-small); color: var(--text-muted); }
+.project-text { font-size: 1.08rem; max-width: 760px; margin-bottom: 2.5rem; }
+.project-text h2 { font-size: var(--px-small); margin: 2rem 0 .75rem; }
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.75rem;
+}
+.project { padding: 0; display: flex; flex-direction: column; }
+.project-img {
+  aspect-ratio: 16 / 10;
+  background: var(--img-bg, var(--bg-alt));
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.project-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+.project:hover .project-img img { transform: scale(1.04); }
+.project-body { padding: 1.5rem 1.75rem 1.75rem; display: flex; flex-direction: column; flex: 1; }
+.project-body p { color: var(--text-muted); font-size: .97rem; }
+.project-links {
+  margin-top: auto;
+  padding-top: 1.25rem;
+  display: flex;
+  gap: 1.25rem;
+}
+
+/* ---------- Médias ---------- */
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.75rem;
+}
+.media { margin: 0; padding: 0; }
+.media img,
+.media video { width: 100%; display: block; }
+.media figcaption { padding: .75rem 1rem; color: var(--text-muted); font-size: .92rem; }
+
+/* ---------- Barre du bas ---------- */
+/* Barre fine sur une seule ligne, texte plus petit que les autres libellés */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: .2rem 0;
+  background: var(--bg-alt);
+  color: var(--text-muted);
+  font-size: .75rem;
+}
+.site-footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: .5rem 1.5rem;
+  max-width: none;            /* comme la barre du haut */
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+.footer-inner p { margin: 0; }
+/* © à gauche, croix à droite */
+.footer-simple .footer-inner { flex: 1; justify-content: space-between; }
+/* Croix de la barre du bas (retour en haut / retour à l'accueil) */
+.footer-cross {
+  display: inline-flex;
+  align-items: center;
+  padding: .35rem;            /* garde une zone cliquable correcte autour de la petite croix */
+  color: var(--text);
+}
+.footer-cross:hover { color: var(--accent); }
+
+/* ---------- Animations d'apparition ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  html { scroll-behavior: auto; }
+}
+
+/* ---------- Petits écrans ---------- */
+@media (max-width: 700px) {
+  .section { padding: 2rem 24px 3rem; }
+  .section-head { gap: .8rem; }
+  .section-head::after { flex-basis: 100%; margin-left: 0; }
+  /* Page de projet : le titre reste à côté de son logo et passe à la ligne si besoin */
+  .title-logo + h1 { flex: 1 1 0; min-width: 0; }
+}

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" shape-rendering="crispEdges">
+  <!-- Initiales "KC" dessinées en pixels (carrés de 4) -->
+  <rect width="64" height="64" fill="#0c0d0f"/>
+  <path fill="#f28a3c" d="M10 18h4v28h-4z M26 18h4v4h-4z M22 22h4v4h-4z M18 26h4v4h-4z M14 30h4v4h-4z M18 34h4v4h-4z M22 38h4v4h-4z M26 42h4v4h-4z M38 18h12v4h-12z M34 22h4v20h-4z M50 22h4v4h-4z M50 38h4v4h-4z M38 42h12v4h-12z"/>
+</svg>

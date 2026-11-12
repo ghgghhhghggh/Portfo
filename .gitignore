@@ -1,0 +1,7 @@
+# Réglages locaux de l'outil de prévisualisation
+.claude/
+
+# Fichiers créés par le système
+Thumbs.db
+desktop.ini
+.DS_Store
