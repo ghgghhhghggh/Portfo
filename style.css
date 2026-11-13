@@ -223,6 +223,18 @@ p { margin: 0 0 1rem; }
 
 .section-page { min-height: 50vh; }
 
+/* ---------- Accueil : scène en symboles ---------- */
+/* La scène est centrée dans la place laissée entre la barre du haut et celle du bas */
+/* Les marges négatives annulent celles de la page : la scène va d'un bord à l'autre de l'écran */
+.home-scene { display: flex; justify-content: center; align-items: center; min-height: calc(100vh - 13rem); margin: 0 -24px; }
+/* La hauteur s'adapte à l'écran pour que la scène tienne sans faire défiler la page */
+.ascii-scene {
+  display: block;
+  width: 100%;
+  height: min(680px, calc(100vh - 13rem), 110vw);
+  min-height: 300px;
+}
+
 /* ---------- Cartes ---------- */
 /* Cadre fin à angles droits */
 .card {

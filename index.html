@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=35">
+  <link rel="stylesheet" href="style.css?v=40">
 </head>
 <body>
 
@@ -38,8 +38,12 @@
 
   <main>
 
-    <!-- Contenu de la page d'accueil : à remplir -->
-    <section id="accueil" class="section section-page container"></section>
+    <!-- Scène d'accueil : étoile et anneaux en 3D, dessinés avec des symboles (voir ascii.js) -->
+    <section id="accueil" class="section section-page container">
+      <div class="home-scene">
+        <canvas id="ascii-scene" class="ascii-scene" aria-hidden="true"></canvas>
+      </div>
+    </section>
   </main>
 
   <footer class="site-footer footer-simple">
@@ -54,5 +58,6 @@
   </footer>
 
   <script src="script.js?v=8"></script>
+  <script src="ascii.js?v=8"></script>
 </body>
 </html>

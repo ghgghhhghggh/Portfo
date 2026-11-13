@@ -16,6 +16,7 @@ medias.html       → page Médias
 contact.html      → page Contact
 style.css         → apparence (couleurs, polices, cadres)
 script.js         → menu déroulant, animations
+ascii.js          → scène animée de la page d'accueil (étoile en symboles)
 assets/           → images (favicon, captures de projets)
 ```
 
