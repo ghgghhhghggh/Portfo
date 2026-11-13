@@ -10,28 +10,48 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=40">
+  <script src="prefs.js?v=1"></script>
+  <link rel="stylesheet" href="style.css?v=50">
 </head>
 <body>
 
   <!-- ===== BARRE DU HAUT ===== -->
   <header class="site-header">
-    <nav class="nav container" aria-label="Navigation principale">
-      <a href="index.html" class="logo">KC<span>.</span></a>
+    <nav class="nav container" aria-label="Navigation principale" data-i18n-attr="aria-label:nav.main">
+      <a href="index.html" class="logo" translate="no">KC<span>.</span></a>
 
+      <!-- Menu unique : les pages, puis les options d'affichage (langue et thème) -->
       <div class="menu">
-        <button class="icon-btn menu-btn" id="menu-btn" aria-label="Ouvrir le menu" aria-haspopup="true" aria-expanded="false" aria-controls="menu-list">
-          <!-- Icône "menu" fournie ; croix pixel dans le style des icônes de titre -->
-          <svg class="icon-open" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M 4 7 L 4 9 L 28 9 L 28 7 L 4 7 z M 4 15 L 4 17 L 28 17 L 28 15 L 4 15 z M 4 23 L 4 25 L 28 25 L 28 23 L 4 23 z"></path></svg>
+        <button class="icon-btn menu-btn" id="menu-btn" data-label="menu" aria-label="Ouvrir le menu" aria-haspopup="true" aria-expanded="false" aria-controls="menu-list">
+          <!-- Trois barres fines en pixels (2 px) ; croix du même trait que celle de la barre du bas, en plus grand (14 px) -->
+          <svg class="icon-open" width="18" height="16" viewBox="0 0 18 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 1h18v2H0z M0 7h18v2H0z M0 13h18v2H0z"/></svg>
           <svg class="icon-close" width="14" height="14" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 0h1v1h-1z M6 0h1v1h-1z M1 1h1v1h-1z M5 1h1v1h-1z M2 2h1v1h-1z M4 2h1v1h-1z M3 3h1v1h-1z M2 4h1v1h-1z M4 4h1v1h-1z M1 5h1v1h-1z M5 5h1v1h-1z M0 6h1v1h-1z M6 6h1v1h-1z"/></svg>
         </button>
-        <ul class="menu-list" id="menu-list" role="menu">
-          <li role="none"><a role="menuitem" href="projets.html" aria-current="page">Projets</a></li>
-          <li role="none"><a role="menuitem" href="medias.html">Médias</a></li>
-          <li role="none"><a role="menuitem" href="apropos.html">À propos</a></li>
-          <li role="none"><a role="menuitem" href="competences.html">Compétences</a></li>
-          <li role="none"><a role="menuitem" href="contact.html">Contact</a></li>
-        </ul>
+        <div class="menu-list" id="menu-list">
+          <ul role="menu">
+            <li role="none"><a role="menuitem" href="projets.html" aria-current="page" data-i18n="nav.projets">Projets</a></li>
+            <li role="none"><a role="menuitem" href="medias.html" data-i18n="nav.medias">Médias</a></li>
+            <li role="none"><a role="menuitem" href="competences.html" data-i18n="nav.competences">Compétences</a></li>
+            <li role="none"><a role="menuitem" href="apropos.html" data-i18n="nav.apropos">À propos</a></li>
+          </ul>
+          <!-- Options d'affichage, séparées des pages par un filet -->
+          <div class="menu-options">
+            <div class="misc-row">
+              <span class="misc-label" data-i18n="misc.lang">Langue</span>
+              <span class="misc-options" translate="no">
+                <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+                <button type="button" data-lang="en" aria-pressed="false">EN</button>
+              </span>
+            </div>
+            <div class="misc-row">
+              <span class="misc-label" data-i18n="misc.theme">Thème</span>
+              <span class="misc-options">
+                <button type="button" data-theme-set="dark" aria-pressed="true" data-i18n="misc.dark">Sombre</button>
+                <button type="button" data-theme-set="light" aria-pressed="false" data-i18n="misc.light">Clair</button>
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </nav>
   </header>
@@ -39,19 +59,19 @@
   <main>
     <section class="section section-page container">
       <div class="section-head reveal">
-        <h1>Projets</h1>
+        <h1 data-i18n="nav.projets">Projets</h1>
       </div>
       <!-- Sous-catégorie 1 : le titre ouvre la page iceample.html -->
       <section class="subcat reveal" id="iceample">
         <h2 class="subcat-title">
           <a href="iceample.html">
             <img class="subcat-logo" src="assets/iceample-logo.png" width="298" height="175" alt="">
-            <span>Iceample <span class="subcat-desc">Logiciel et WebApp multifonction</span></span>
+            <span><span translate="no">Iceample</span> <span class="subcat-desc" data-i18n="iceample.sub">Logiciel et WebApp multifonction</span></span>
           </a>
         </h2>
         <div class="subcat-text">
           <!-- Petit paragraphe de description d'Iceample -->
-          <p>Une grande variété d'outils allant de la conception audio à l'édition image en passant par la gestion de fichiers, Iceample permet une liberté de création par sa facilité d'utilisation, tout en permettant à l'utilisateur une personnalisation maximum de son interface de travail.</p>
+          <p data-i18n="iceample.short">Une grande variété d'outils allant de la conception audio à l'édition image en passant par la gestion de fichiers, <span translate="no">Iceample</span> permet une liberté de création par sa facilité d'utilisation, tout en permettant à l'utilisateur une personnalisation maximum de son interface de travail.</p>
         </div>
       </section>
 
@@ -60,12 +80,12 @@
         <h2 class="subcat-title">
           <a href="nadirheim.html">
             <img class="subcat-logo subcat-logo-pixel" src="assets/nadirheim-icone.png" width="16" height="16" alt="">
-            <span>Nadirheim <span class="subcat-desc">The Southern Veil</span></span>
+            <span translate="no">Nadirheim <span class="subcat-desc">The Southern Veil</span></span>
           </a>
         </h2>
         <div class="subcat-text">
           <!-- Petit paragraphe de description de Nadirheim -->
-          <p>Un mod Minecraft mêlant exploration, lore et technique à la recherche d'un monde oublié par le temps. Avec comme mécanisme principal l'alchimie, qui offre un juste milieu entre les mods magie et tech déjà existants.</p>
+          <p data-i18n="nadirheim.short">Un mod <span translate="no">Minecraft</span> mêlant exploration, lore et technique à la recherche d'un monde oublié par le temps. Avec comme mécanisme principal l'alchimie, qui offre un juste milieu entre les mods magie et tech déjà existants.</p>
         </div>
       </section>
     </section>
@@ -74,14 +94,14 @@
   <footer class="site-footer footer-simple">
     <div class="container">
       <div class="footer-inner">
-        <p>© <span id="year"></span> Kyliann Chapel, ghgghhhghggh.</p>
-        <a href="index.html" class="footer-cross" aria-label="Retour à l'accueil" title="Retour à l'accueil">
+        <p>© <span id="year"></span> <span translate="no">Kyliann Chapel, ghgghhhghggh</span>.</p>
+        <a href="index.html" class="footer-cross" aria-label="Retour à l'accueil" title="Retour à l'accueil" data-i18n-attr="aria-label:back.home;title:back.home">
           <svg width="10" height="10" viewBox="0 0 5 5" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 0h1v1h-1z M4 0h1v1h-1z M1 1h1v1h-1z M3 1h1v1h-1z M2 2h1v1h-1z M1 3h1v1h-1z M3 3h1v1h-1z M0 4h1v1h-1z M4 4h1v1h-1z"/></svg>
         </a>
       </div>
     </div>
   </footer>
 
-  <script src="script.js?v=8"></script>
+  <script src="script.js?v=11"></script>
 </body>
 </html>

@@ -7,15 +7,15 @@ Il suffit d'ouvrir `index.html` dans un navigateur.
 
 ```
 index.html        → page d'accueil
-apropos.html      → page À propos
+apropos.html      → page À propos, avec le contact en bas
 competences.html  → page Compétences
 projets.html      → page Projets (deux sous-catégories)
 iceample.html     → page détaillée du projet Iceample
 nadirheim.html    → page détaillée du projet Nadirheim
 medias.html       → page Médias
-contact.html      → page Contact
 style.css         → apparence (couleurs, polices, cadres)
-script.js         → menu déroulant, animations
+script.js         → menus, langue (français / anglais), thème (sombre / clair), animations
+prefs.js          → applique le thème et la langue choisis dès l'ouverture d'une page
 ascii.js          → scène animée de la page d'accueil (étoile en symboles)
 assets/           → images (favicon, captures de projets)
 ```
@@ -43,9 +43,16 @@ Sobre, sur fond noir grisé uni :
    (projet de fan d'Idrees Hassan, licence SIL OFL 1.1, sans fichier du jeu). Elle est
    déclarée tout en haut de `style.css` et reste nette aux deux tailles prévues,
    `--px-small` et `--px-large`. Le texte courant vient de Google Fonts.
-6. **Contact** : dans `contact.html`, la liste contient le lien GitHub ; un modèle en
+6. **Contact** : en bas de `apropos.html`, la liste contient le lien GitHub ; un modèle en
    commentaire montre comment ajouter un autre lien (e-mail, réseau…).
 7. **Favicon** : remplacez `assets/favicon.svg` (initiales « KC » dessinées en pixels, en orange).
+
+**Langue et thème** : le bas du menu (sous la liste des pages) permet au visiteur de passer
+en anglais ou en thème clair ; son choix est retenu d'une page à l'autre. Le français est le texte
+écrit dans les pages. Les textes anglais sont regroupés en haut de `script.js` : un élément marqué
+`data-i18n="clé"` dans une page prend le texte anglais de la même clé, et reste en français s'il
+n'a pas de traduction. Les noms propres portent `translate="no"` pour que la traduction
+automatique des navigateurs n'y touche pas. Les couleurs du thème clair sont dans `style.css`.
 
 Après une modification de `style.css` ou `script.js`, augmentez le numéro `?v=` dans les
 liens des pages HTML pour que le navigateur recharge bien le fichier.

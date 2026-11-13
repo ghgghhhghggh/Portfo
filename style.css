@@ -46,6 +46,23 @@
   --px-large: 2.25rem;        /* titres */
 }
 
+/* Thème clair : choisi par le visiteur en bas du menu.
+   Il s'active quand <html> porte l'attribut data-theme="light". */
+:root[data-theme="light"] {
+  --bg: #f4f2ec;
+  --bg-alt: #ebe8e0;
+  --surface: #fbfaf7;
+  --border: #d8d4ca;
+  --border-strong: #b5b0a4;
+  --text: #16171a;
+  --text-muted: #6a6c74;
+  --accent: #c2570c;          /* orange plus soutenu, lisible sur fond clair */
+  --accent-hover: #984207;
+  --accent-soft: rgba(194, 87, 12, 0.1);
+  --shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+  color-scheme: light;
+}
+
 /* ---------- Base ---------- */
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -151,18 +168,25 @@ p { margin: 0 0 1rem; }
 .logo:hover { color: var(--text); }
 .logo span { color: var(--accent); }
 
+/* Tailles et marges en pixels entiers et pairs : les icônes en pixels restent nettes.
+   La marge négative fait s'arrêter les barres à 24 px du bord, comme le logo à gauche. */
+.menu { margin-right: -6px; }
+#menu-btn { width: 30px; }
+
 /* Bouton du menu */
 .icon-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 42px; height: 42px;
+  padding: 0;                 /* sans marge interne, sinon une icône peut être écrasée dans un bouton étroit */
   border: 0;
   background: transparent;
   color: var(--text);
   cursor: pointer;
   transition: color .2s ease;
 }
+.icon-btn svg { flex: none; }
 .icon-btn:hover { color: var(--accent); }
 .menu-btn .icon-close { display: none; }
 .menu.open .menu-btn .icon-open { display: none; }
@@ -174,7 +198,7 @@ p { margin: 0 0 1rem; }
   position: absolute;
   right: 0;
   top: calc(100% + 1px);
-  min-width: 200px;
+  width: 280px;               /* largeur fixe et entière : le bord gauche reste net */
   background: var(--bg-alt);
   border: 1px solid var(--border);
   border-top: 0;
@@ -195,6 +219,37 @@ p { margin: 0 0 1rem; }
 }
 .menu-list a:hover { color: var(--accent); }
 .menu-list a[aria-current="page"] { color: var(--accent); }
+
+/* Options d'affichage, sous la liste des pages : un filet bien visible les en sépare */
+.menu-options {
+  margin-top: .45rem;
+  padding-top: .45rem;
+  border-top: 1px solid var(--border-strong);
+}
+/* Une option : un libellé à gauche, les choix à droite, le choix actif en orange */
+.misc-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.75rem;
+  padding: .6rem 1.1rem;
+  font-family: var(--font-pixel);
+  font-size: var(--px-small);
+  line-height: 1.2;
+}
+.misc-label { color: var(--text); }
+.misc-options { display: flex; gap: .9rem; }
+.misc-options button {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color .2s ease;
+}
+.misc-options button:hover,
+.misc-options button[aria-pressed="true"] { color: var(--accent); }
 
 /* ---------- Sections ---------- */
 /* Contenu calé en haut à gauche, aligné sur le logo, sur toute la largeur */
@@ -259,8 +314,8 @@ p { margin: 0 0 1rem; }
 /* ---------- À propos ---------- */
 .about-text { font-size: 1.08rem; max-width: 760px; }
 
-/* ---------- Contact ---------- */
-.contact-block { max-width: 760px; }
+/* ---------- Contact (en bas de la page À propos) ---------- */
+.about-contact { max-width: 760px; margin-top: 2.5rem; }
 .contact-intro { font-size: 1.08rem; }
 /* Tant qu'il est vide, le texte d'introduction ne prend pas de place */
 .contact-intro:empty { display: none; }
@@ -360,7 +415,7 @@ p { margin: 0 0 1rem; }
 /* Barre fine sur une seule ligne, texte plus petit que les autres libellés */
 .site-footer {
   border-top: 1px solid var(--border);
-  padding: .2rem 0;
+  padding: 3px 0;
   background: var(--bg-alt);
   color: var(--text-muted);
   font-size: .75rem;
@@ -372,6 +427,7 @@ p { margin: 0 0 1rem; }
   flex-wrap: wrap;
   gap: .5rem 1.5rem;
   max-width: none;            /* comme la barre du haut */
+  padding: 0 16px;            /* un peu plus près des bords que le reste du site (24 px) */
 }
 .footer-inner {
   display: flex;
@@ -385,7 +441,8 @@ p { margin: 0 0 1rem; }
 .footer-cross {
   display: inline-flex;
   align-items: center;
-  padding: .35rem;            /* garde une zone cliquable correcte autour de la petite croix */
+  padding: 6px;               /* zone cliquable autour de la petite croix (pixels entiers) */
+  margin-right: -6px;         /* la croix elle-même s'arrête à 16 px du bord, comme le texte à gauche */
   color: var(--text);
 }
 .footer-cross:hover { color: var(--accent); }

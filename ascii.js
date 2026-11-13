@@ -23,11 +23,15 @@
   const FPS = 20;                      // images par seconde (rendu saccadé façon GIF)
   const CAM = 9;                       // distance de la caméra : plus petit = perspective plus forte
   const LIGHT = normalize([-0.4, 0.55, 0.73]);
-  const BACKGROUND = [12, 13, 15];     // couleur du fond du site (#0c0d0f)
-  // Teinte 0 : blanc. Teintes 1 à 5 : jaune, orange, vert, bleu, magenta.
-  const HUES = ['#ece8df', '#f4d44d', '#f28a3c', '#6fd96b', '#4f9dff', '#e24fc4'];
-  const LEVELS = [0.2, 0.36, 0.56, 0.8, 1];   // 5 intensités, de la plus sombre à la plus vive
-  const N_COLORS = HUES.length - 1;
+  // Une palette par thème du site. "background" est la couleur du fond de la page.
+  // Teinte 0 : la couleur de base (blanc sur fond sombre, noir sur fond clair).
+  // Teintes 1 à 5 : jaune, orange, vert, bleu, magenta (plus soutenus sur fond clair).
+  const PALETTES = {
+    dark: { background: [12, 13, 15], hues: ['#ece8df', '#f4d44d', '#f28a3c', '#6fd96b', '#4f9dff', '#e24fc4'] },
+    light: { background: [244, 242, 236], hues: ['#16171a', '#b98900', '#d0661a', '#2e9e3e', '#2a6fd6', '#c034a8'] }
+  };
+  const LEVELS = [0.2, 0.36, 0.56, 0.8, 1];   // 5 intensités, de la plus effacée à la plus marquée
+  const N_COLORS = PALETTES.dark.hues.length - 1;
 
   // Symboles des faces de l'étoile, de la face la plus sombre à la plus éclairée
   const STAR_RAMP = ['dot', 'colon', 'minus', 'equal', 'plus', 'times', 'dagger', 'sparkle', 'ddagger', 'hash'];
@@ -113,10 +117,12 @@
 
   // Une petite image par symbole, par teinte et par intensité, prête à être collée
   function buildAtlas() {
-    const shades = HUES.map(function (hex) {
+    const palette = PALETTES[document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark'];
+    const bg = palette.background;
+    const shades = palette.hues.map(function (hex) {
       const rgb = [1, 3, 5].map(function (k) { return parseInt(hex.slice(k, k + 2), 16); });
       return LEVELS.map(function (f) {
-        return 'rgb(' + rgb.map(function (v, k) { return Math.round(BACKGROUND[k] + (v - BACKGROUND[k]) * f); }).join(',') + ')';
+        return 'rgb(' + rgb.map(function (v, k) { return Math.round(bg[k] + (v - bg[k]) * f); }).join(',') + ')';
       });
     });
     atlas = {};
@@ -399,6 +405,12 @@
 
   if ('ResizeObserver' in window) new ResizeObserver(resize).observe(canvas);
   else window.addEventListener('resize', resize);
+  // Changement de thème dans le menu : on refait les symboles dans la nouvelle palette
+  document.addEventListener('themechange', function () {
+    if (!px) return;
+    buildAtlas();
+    if (still) render(2.4);
+  });
   resize();
   if (!still) requestAnimationFrame(frame);
 })();
