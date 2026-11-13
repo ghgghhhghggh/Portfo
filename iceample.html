@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="prefs.js?v=1"></script>
-  <link rel="stylesheet" href="style.css?v=50">
+  <link rel="stylesheet" href="style.css?v=59">
 </head>
 <body>
 
@@ -63,18 +63,29 @@
         <h1><span translate="no">Iceample</span> <span class="title-sub" data-i18n="iceample.sub">Logiciel et WebApp multifonction</span></h1>
       </div>
 
-      <!-- Liens du projet (même présentation que le contact de la page À propos) -->
-      <ul class="contact-links project-site reveal">
-        <li>
-          <span class="contact-label" data-i18n="label.site">Site</span>
-          <a href="https://iceample.com" target="_blank" rel="noopener noreferrer" translate="no">Iceample.com</a>
-        </li>
-        <!-- "releases/latest" mène toujours à la dernière version publiée sur GitHub -->
-        <li>
-          <span class="contact-label" translate="no">Windows</span>
-          <a href="https://github.com/ghgghhhghggh/Iceample/releases/latest" target="_blank" rel="noopener noreferrer" data-i18n="label.installer">Installeur (GitHub)</a>
-        </li>
-      </ul>
+      <!-- Haut de page : à gauche, l'emplacement des liens vers les pages de chaque groupe d'outils ;
+           à droite, les liens du projet -->
+      <div class="project-top reveal">
+        <div class="project-tools">
+          <!-- Emplacement réservé aux groupes d'outils (Sound, Image, Files…).
+               Exemple de lien :
+               <a href="iceample-sound.html">Sound</a>
+          -->
+        </div>
+        <ul class="contact-links project-site">
+          <li>
+            <span class="contact-label" data-i18n="label.site">Site</span>
+            <a href="https://iceample.com" target="_blank" rel="noopener noreferrer" translate="no">Iceample.com</a>
+          </li>
+          <!-- "releases/latest" mène toujours à la dernière version publiée sur GitHub -->
+          <li>
+            <span class="contact-label" translate="no">Windows</span>
+            <a href="https://github.com/ghgghhhghggh/Iceample/releases/latest" target="_blank" rel="noopener noreferrer" data-i18n="label.installer">Installeur (GitHub)</a>
+          </li>
+        </ul>
+      </div>
+
+      <h2 class="subcat-title reveal" data-i18n="iceample.overview">Vue d'ensemble</h2>
 
       <div class="project-text reveal">
         <!-- Écrivez ici la description détaillée d'Iceample.
@@ -83,11 +94,42 @@
       </div>
 
       <div class="media-grid">
-        <!-- Ajoutez ici les images d'Iceample.
+        <!-- La légende se place au-dessus de l'image -->
+        <figure class="media card reveal">
+          <figcaption data-i18n="iceample.fig.langues">Choix de la langue utilisée</figcaption>
+          <img src="assets/iceample-langues.png?v=2" width="446" height="266" alt="Écran de choix de la langue dans Iceample, avec douze langues proposées" data-i18n-attr="alt:iceample.fig.langues.alt">
+        </figure>
+        <!-- Deuxième bloc : plusieurs parties, chacune avec sa légende au-dessus de son image -->
+        <div class="media card reveal">
+          <figure class="media-part">
+            <figcaption data-i18n="iceample.fig.themes">Préréglages de thèmes</figcaption>
+            <img src="assets/iceample-themes.png" width="440" height="80" alt="Dix préréglages de thèmes dans Iceample : Iceample, Arctic, Midnight, Nebula, Ember, Crimson, Aurora, Gold, Neon et Mono" data-i18n-attr="alt:iceample.fig.themes.alt">
+          </figure>
+          <figure class="media-part">
+            <figcaption data-i18n="iceample.fig.reglages">Personnalisation de tous les modules</figcaption>
+            <img src="assets/iceample-reglages.png" width="437" height="601" alt="Réglages d'apparence d'Iceample : police, arrondi des fenêtres et une quinzaine de couleurs modifiables" data-i18n-attr="alt:iceample.fig.reglages.alt">
+          </figure>
+          <figure class="media-part">
+            <figcaption data-i18n="iceample.fig.partage">Partage de préréglages de thèmes personnalisés</figcaption>
+            <img src="assets/iceample-partage.png" width="436" height="46" alt="Boutons Export et Import d'Iceample" data-i18n-attr="alt:iceample.fig.partage.alt">
+          </figure>
+        </div>
+        <!-- Troisième bloc : le menu principal, puis trois de ses sous-menus ouverts.
+             Deux colonnes sur deux lignes, dans un bloc deux fois plus large que les autres. -->
+        <figure class="media media-wide card reveal">
+          <figcaption data-i18n="iceample.fig.menu">Menu principal et sous-menus</figcaption>
+          <div class="media-quad">
+            <div><img src="assets/iceample-menu-1.png" width="394" height="269" alt="Menu principal d'Iceample : Files, Image, Animation, Video, Sound, Utilities et Settings" data-i18n-attr="alt:iceample.fig.menu1.alt"></div>
+            <div><img src="assets/iceample-menu-2.png" width="394" height="269" alt="Sous-menu Files : Search, Import, Library, Recents, Metadata et Converter" data-i18n-attr="alt:iceample.fig.menu2.alt"></div>
+            <div><img src="assets/iceample-menu-3.png" width="394" height="293" alt="Sous-menu Image : 3D, Effects, Palettes, Moodboard, RAW photo, Image editor et Pattern Generator" data-i18n-attr="alt:iceample.fig.menu3.alt"></div>
+            <div><img src="assets/iceample-menu-4.png" width="394" height="485" alt="Sous-menu Sound : Mixer, Delay, Player, Mic track, Sequencer, Metronome, Audio track, Sound editor, Virtual piano et Master Equalizer" data-i18n-attr="alt:iceample.fig.menu4.alt"></div>
+          </div>
+        </figure>
+        <!-- Ajoutez ici les autres images d'Iceample.
              Exemple de bloc :
              <figure class="media card reveal">
-               <img src="assets/iceample-1.jpg" alt="Description de l'image">
                <figcaption>Légende</figcaption>
+               <img src="assets/iceample-1.jpg" alt="Description de l'image">
              </figure>
         -->
       </div>
@@ -105,6 +147,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=11"></script>
+  <script src="script.js?v=16"></script>
 </body>
 </html>

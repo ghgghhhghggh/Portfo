@@ -315,7 +315,11 @@ p { margin: 0 0 1rem; }
 .about-text { font-size: 1.08rem; max-width: 760px; }
 
 /* ---------- Contact (en bas de la page À propos) ---------- */
-.about-contact { max-width: 760px; margin-top: 2.5rem; }
+/* La page À propos occupe toute la hauteur libre, et le contact se cale tout en bas,
+   même quand la présentation est courte */
+.page-about { display: flex; flex-direction: column; }
+.page-about > .section { flex: 1; display: flex; flex-direction: column; padding-bottom: 2.5rem; }
+.about-contact { width: 100%; max-width: 760px; margin-top: auto; padding-top: 2.5rem; }
 .contact-intro { font-size: 1.08rem; }
 /* Tant qu'il est vide, le texte d'introduction ne prend pas de place */
 .contact-intro:empty { display: none; }
@@ -369,11 +373,21 @@ p { margin: 0 0 1rem; }
 .title-logo { height: 40px; width: auto; flex: none; }
 .title-logo-pixel { height: 32px; }
 .title-sub { font-size: var(--px-small); color: var(--text-muted); }
-/* Liens du projet, placés sous le titre */
-.project-site { margin-bottom: 2rem; }
+/* Haut d'une page de projet : l'emplacement des groupes d'outils à gauche, les liens du projet à droite */
+.project-top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.25rem 3rem;
+  margin-bottom: 2.25rem;
+}
+.project-tools { flex: 1; min-width: 0; }
 /* Libellés un peu plus larges, pour que les liens restent alignés */
 .project-site .contact-label { min-width: 6.5rem; }
 .project-text { font-size: 1.08rem; max-width: 760px; margin-bottom: 2.5rem; }
+/* Tant que la description est vide, elle ne laisse pas de blanc entre le titre et les blocs */
+.project-text:not(:has(> :not(:empty))) { display: none; }
 .project-text h2 { font-size: var(--px-small); margin: 2rem 0 .75rem; }
 
 .projects-grid {
@@ -403,13 +417,38 @@ p { margin: 0 0 1rem; }
 /* ---------- Médias ---------- */
 .media-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));   /* jamais plus large que l'écran */
   gap: 1.75rem;
+  align-items: start;
 }
-.media { margin: 0; padding: 0; }
+/* Le cadre prend le fond des captures d'Iceample (#16121e) : une image moins large
+   que le cadre se prolonge ainsi sans raccord visible */
+.media { margin: 0; padding: 0; background: #16121e; }
+/* Un bloc peut contenir plusieurs parties : à partir de la deuxième, un filet sépare la légende de l'image du dessus */
+.media-part { margin: 0; }
+.media-part + .media-part figcaption { border-top: 1px solid var(--border); }
+/* Les captures s'affichent à leur taille réelle, sans agrandissement (elles restent nettes),
+   et rétrécissent seulement si le cadre est plus étroit qu'elles */
 .media img,
-.media video { width: 100%; display: block; }
-.media figcaption { padding: .75rem 1rem; color: var(--text-muted); font-size: .92rem; }
+.media video { display: block; width: auto; max-width: 100%; height: auto; }
+/* Plusieurs captures à la suite dans un même bloc : un filet entre chacune */
+.media img + img { border-top: 1px solid var(--border); }
+/* Quatre captures en deux colonnes sur deux lignes. L'écart de 1 px laisse voir le fond
+   de la grille, qui dessine les filets entre les cases, sur toute leur hauteur. */
+.media-quad { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+.media-quad > div { background: #16121e; }
+/* Ce bloc occupe deux colonnes de la page quand il y a la place */
+@media (min-width: 760px) {
+  .media-wide { grid-column: span 2; }
+}
+/* La légende est au-dessus de l'image, séparée d'elle par un filet */
+.media figcaption {
+  padding: .75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: .92rem;
+}
 
 /* ---------- Barre du bas ---------- */
 /* Barre fine sur une seule ligne, texte plus petit que les autres libellés */
@@ -465,6 +504,8 @@ p { margin: 0 0 1rem; }
   .section { padding: 2rem 24px 3rem; }
   .section-head { gap: .8rem; }
   .section-head::after { flex-basis: 100%; margin-left: 0; }
+  /* Sur téléphone, les quatre captures du menu repassent l'une sous l'autre pour rester lisibles */
+  .media-quad { grid-template-columns: 1fr; }
   /* Page de projet : le titre reste à côté de son logo et passe à la ligne si besoin */
   .title-logo + h1 { flex: 1 1 0; min-width: 0; }
 }
