@@ -11,6 +11,7 @@ apropos.html      → page À propos, avec le contact en bas
 competences.html  → page Compétences
 projets.html      → page Projets (deux sous-catégories)
 iceample.html     → page détaillée du projet Iceample
+iceample-*.html   → une page par groupe d'outils d'Iceample (fichiers, image, animation, vidéo, son, utilitaires)
 nadirheim.html    → page détaillée du projet Nadirheim
 medias.html       → page Médias
 style.css         → apparence (couleurs, polices, cadres)
@@ -53,6 +54,13 @@ en anglais ou en thème clair ; son choix est retenu d'une page à l'autre. Le f
 `data-i18n="clé"` dans une page prend le texte anglais de la même clé, et reste en français s'il
 n'a pas de traduction. Les noms propres portent `translate="no"` pour que la traduction
 automatique des navigateurs n'y touche pas. Les couleurs du thème clair sont dans `style.css`.
+
+**Blocs d'images** : dans une grille d'images, les blocs se rangent tout seuls selon la largeur
+de l'écran, pour laisser le moins de vide possible, et dans un ordre tiré au hasard à chaque
+visite. Il suffit d'ajouter un bloc dans la page : il trouvera sa place. Un bloc qui contient
+plusieurs captures peut porter `data-flex` : il se mettra alors en large ou en hauteur selon
+la place à combler. Un bloc qui porte `data-fit` se resserre autour de son image au lieu de
+remplir sa colonne. Le réglage est dans la partie « Agencement » de `script.js`.
 
 Après une modification de `style.css` ou `script.js`, augmentez le numéro `?v=` dans les
 liens des pages HTML pour que le navigateur recharge bien le fichier.

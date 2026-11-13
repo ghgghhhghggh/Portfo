@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vidéo — Iceample — Kyliann Chapel, ghgghhhghggh</title>
+  <meta name="description" content="">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="prefs.js?v=1"></script>
+  <link rel="stylesheet" href="style.css?v=64">
+</head>
+<body>
+
+  <!-- ===== BARRE DU HAUT ===== -->
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navigation principale" data-i18n-attr="aria-label:nav.main">
+      <a href="index.html" class="logo" translate="no">KC<span>.</span></a>
+
+      <!-- Menu unique : les pages, puis les options d'affichage (langue et thème) -->
+      <div class="menu">
+        <button class="icon-btn menu-btn" id="menu-btn" data-label="menu" aria-label="Ouvrir le menu" aria-haspopup="true" aria-expanded="false" aria-controls="menu-list">
+          <!-- Trois barres fines en pixels (2 px) ; croix du même trait que celle de la barre du bas, en plus grand (14 px) -->
+          <svg class="icon-open" width="18" height="16" viewBox="0 0 18 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 1h18v2H0z M0 7h18v2H0z M0 13h18v2H0z"/></svg>
+          <svg class="icon-close" width="14" height="14" viewBox="0 0 7 7" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 0h1v1h-1z M6 0h1v1h-1z M1 1h1v1h-1z M5 1h1v1h-1z M2 2h1v1h-1z M4 2h1v1h-1z M3 3h1v1h-1z M2 4h1v1h-1z M4 4h1v1h-1z M1 5h1v1h-1z M5 5h1v1h-1z M0 6h1v1h-1z M6 6h1v1h-1z"/></svg>
+        </button>
+        <div class="menu-list" id="menu-list">
+          <ul role="menu">
+            <li role="none"><a role="menuitem" href="projets.html" aria-current="page" data-i18n="nav.projets">Projets</a></li>
+            <li role="none"><a role="menuitem" href="medias.html" data-i18n="nav.medias">Médias</a></li>
+            <li role="none"><a role="menuitem" href="competences.html" data-i18n="nav.competences">Compétences</a></li>
+            <li role="none"><a role="menuitem" href="apropos.html" data-i18n="nav.apropos">À propos</a></li>
+          </ul>
+          <!-- Options d'affichage, séparées des pages par un filet -->
+          <div class="menu-options">
+            <div class="misc-row">
+              <span class="misc-label" data-i18n="misc.lang">Langue</span>
+              <span class="misc-options" translate="no">
+                <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+                <button type="button" data-lang="en" aria-pressed="false">EN</button>
+              </span>
+            </div>
+            <div class="misc-row">
+              <span class="misc-label" data-i18n="misc.theme">Thème</span>
+              <span class="misc-options">
+                <button type="button" data-theme-set="dark" aria-pressed="true" data-i18n="misc.dark">Sombre</button>
+                <button type="button" data-theme-set="light" aria-pressed="false" data-i18n="misc.light">Clair</button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section section-page container">
+      <div class="section-head reveal">
+        <img class="title-logo" src="assets/iceample-logo.png" width="298" height="175" alt="">
+        <h1><span translate="no">Iceample</span> <span class="title-sub" data-i18n="tools.video">Vidéo</span></h1>
+      </div>
+
+      <div class="project-text reveal">
+        <!-- Écrivez ici la présentation des outils du groupe « Vidéo ».
+             Un bloc <p>...</p> par paragraphe ; <h2>...</h2> pour un intertitre. -->
+        <p></p>
+      </div>
+
+      <div class="media-grid">
+        <!-- Ajoutez ici les captures des outils de ce groupe.
+             Exemple de bloc :
+             <figure class="media card reveal">
+               <figcaption>Légende</figcaption>
+               <img src="assets/iceample-video-1.png" alt="Description de l'image">
+             </figure>
+        -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer footer-simple">
+    <div class="container">
+      <div class="footer-inner">
+        <p>© <span id="year"></span> <span translate="no">Kyliann Chapel, ghgghhhghggh</span>.</p>
+        <a href="iceample.html" class="footer-cross" aria-label="Retour à Iceample" title="Retour à Iceample" data-i18n-attr="aria-label:back.iceample;title:back.iceample">
+          <svg width="10" height="10" viewBox="0 0 5 5" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 0h1v1h-1z M4 0h1v1h-1z M1 1h1v1h-1z M3 1h1v1h-1z M2 2h1v1h-1z M1 3h1v1h-1z M3 3h1v1h-1z M0 4h1v1h-1z M4 4h1v1h-1z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js?v=23"></script>
+</body>
+</html>
