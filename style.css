@@ -302,6 +302,10 @@ p { margin: 0 0 1rem; }
 .title-logo { height: 40px; width: auto; flex: none; }
 .title-logo-pixel { height: 32px; }
 .title-sub { font-size: var(--px-small); color: var(--text-muted); }
+/* Liens du projet, placés sous le titre */
+.project-site { margin-bottom: 2rem; }
+/* Libellés un peu plus larges, pour que les liens restent alignés */
+.project-site .contact-label { min-width: 6.5rem; }
 .project-text { font-size: 1.08rem; max-width: 760px; margin-bottom: 2.5rem; }
 .project-text h2 { font-size: var(--px-small); margin: 2rem 0 .75rem; }
 
