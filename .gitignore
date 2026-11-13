@@ -1,6 +1,9 @@
 # Réglages locaux de l'outil de prévisualisation
 .claude/
 
+# Mode d'emploi personnel, gardé hors du dépôt et du site
+README.md
+
 # Fichiers créés par le système
 Thumbs.db
 desktop.ini
