@@ -35,6 +35,7 @@
     'label.site': 'Website',
     'label.email': 'Email',
     'label.installer': 'Installer (GitHub)',
+    'label.repo': 'GitHub repository',
     'iceample.sub': 'Multi-purpose software and web app',
     'iceample.overview': 'Overview',
     'tools.label': 'Tool groups',
@@ -64,6 +65,8 @@
     'iceample.fig.menu3.alt': 'Image submenu: 3D, Effects, Palettes, Moodboard, RAW photo, Image editor and Pattern Generator',
     'iceample.fig.menu4.alt': 'Sound submenu: Mixer, Delay, Player, Mic track, Sequencer, Metronome, Audio track, Sound editor, Virtual piano and Master Equalizer',
     'iceample.short': 'A wide variety of tools, from audio design to image editing and file management. <span translate="no">Iceample</span> gives you creative freedom through its ease of use, while letting you customize your workspace to the fullest.',
+    'nadirheim.status.title': 'Project status',
+    'nadirheim.status.text': '<span translate="no">Nadirheim</span> is still at an early stage. A few mechanics are already in place, along with the beginnings of the dimension, but very little lore has been implemented so far. The project is already well structured; it now needs time to implement all of its features.',
     'nadirheim.short': 'A <span translate="no">Minecraft</span> mod blending exploration, lore and tech in search of a world forgotten by time. Its core mechanic is alchemy, a middle ground between the magic and tech mods that already exist.'
   };
   // Nom des pages dans le titre de l'onglet du navigateur
